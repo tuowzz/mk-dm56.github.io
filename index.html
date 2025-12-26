@@ -139,6 +139,7 @@
 
     .btn{
       display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      width:100%;
       min-height:54px;
       padding:16px 18px;
       border-radius:16px;
@@ -151,6 +152,7 @@
       user-select:none;
       -webkit-tap-highlight-color: transparent;
     }
+    @media(min-width:720px){ .btn{ width:auto; } }
     .btn:active{ transform: translateY(1px); }
 
     .goldline{
@@ -198,9 +200,13 @@
       line-height:1.6;
     }
 
-    /* Layout blocks */
-    .grid{ display:grid; gap:14px; margin-top:14px; }
-    @media (min-width: 900px){ .grid{ grid-template-columns: 1.05fr .95fr; } }
+    /* STACK ONLY (ไม่แบ่ง 2 คอลัมน์) */
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:14px;
+      margin-top:14px;
+    }
 
     .list{ margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:10px; }
     .item{
@@ -252,64 +258,82 @@
 
     .footer{ color: var(--muted2); font-size:12px; line-height:1.75; margin-top: 12px; }
 
-/* ===== FULL-BLEED VIDEO (Mobile full screen) + Desktop 9:16 ===== */
-.video-full{
-  width:100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
-  margin-top:14px;
-  margin-bottom:14px;
-  background:#000;
-  overflow:hidden;
-  border-top:1px solid rgba(255,255,255,.10);
-  border-bottom:1px solid rgba(255,255,255,.10);
-}
+    /* ===== FULL-BLEED VIDEO (Mobile full screen) + Desktop 9:16 ===== */
+    .video-full{
+      width:100vw;
+      margin-left: calc(50% - 50vw);
+      margin-right: calc(50% - 50vw);
+      margin-top:14px;
+      margin-bottom:14px;
+      background:#000;
+      overflow:hidden;
+      border-top:1px solid rgba(255,255,255,.10);
+      border-bottom:1px solid rgba(255,255,255,.10);
+    }
 
-/* ===== Desktop/Tablet: แสดงเป็นกรอบ 9:16 อยู่กลางจอ ===== */
-@media (min-width: 821px){
-  .video-full{
-    height: auto;
-    padding: 18px 0;
-    border-radius: 18px;
-    border-left:1px solid rgba(255,255,255,.10);
-    border-right:1px solid rgba(255,255,255,.10);
-  }
+    /* Desktop/Tablet: กรอบ 9:16 กลางจอ */
+    @media (min-width: 821px){
+      .video-full{
+        height:auto;
+        padding: 18px 0;
+        border-radius: 18px;
+        border-left:1px solid rgba(255,255,255,.10);
+        border-right:1px solid rgba(255,255,255,.10);
+      }
+      .video-full video{
+        display:block;
+        margin: 0 auto;
+        height: min(80vh, 860px);
+        aspect-ratio: 9 / 16;
+        width: auto;
+        max-width: 520px;
+        border-radius: 18px;
+        object-fit: contain;
+        background:#000;
+        box-shadow: 0 18px 55px rgba(0,0,0,.45);
+      }
+    }
 
-  .video-full video{
-    display:block;
-    margin: 0 auto;
-    height: min(80vh, 860px);
-    aspect-ratio: 9 / 16;   /* ล็อกสัดส่วน TikTok */
-    width: auto;            /* คำนวณจาก height + aspect-ratio */
-    max-width: 520px;       /* กันใหญ่เกินบนจอคอม */
-    border-radius: 18px;
-    object-fit: contain;    /* ไม่ครอป เพี้ยนหาย */
-    background:#000;
-    box-shadow: 0 18px 55px rgba(0,0,0,.45);
-  }
-}
+    /* Mobile: เต็มจอ */
+    @media (max-width: 820px){
+      .video-full{
+        height: 92svh;
+        height: 92dvh;
+        border-radius:0;
+        border-left:none;
+        border-right:none;
+        padding:0;
+      }
+      .video-full video{
+        width:100%;
+        height:100%;
+        display:block;
+        object-fit: cover;
+        object-position: center;
+        background:#000;
+      }
+    }
 
-/* ===== Mobile: เต็มจอแบบ cinematic ===== */
-@media (max-width: 820px){
-  .video-full{
-    height: 92svh;
-    height: 92dvh;
-    border-radius:0;
-    border-left:none;
-    border-right:none;
-    padding:0;
-  }
-  .video-full video{
-    width:100%;
-    height:100%;
-    display:block;
-    object-fit: cover;
-    object-position: center;
-    background:#000;
-  }
-}
-</style>
-
+    /* ===== Hook card (ข้อความดึงดูดระหว่างคลิป) ===== */
+    .hook{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:18px;
+    }
+    .hook p{
+      margin:0;
+      color: rgba(247,247,251,.86);
+      font-weight:900;
+      letter-spacing:.2px;
+      line-height:1.55;
+      font-size: clamp(16px, 4.8vw, 20px);
+    }
+    .hook p span{
+      color: rgba(214,184,115,.95);
+    }
+  </style>
 
   <!-- Structured Data -->
   <script type="application/ld+json">
@@ -343,7 +367,9 @@
       <div class="chip">เน้น LINE • ไม่โทร</div>
     </div>
 
-    <!-- HERO -->
+    <!-- =======================================================
+         1) HERO
+         ======================================================= -->
     <section class="card hero" aria-label="Hero">
       <img
         src="ChatGPT Image 26 ธ.ค. 2568 14_19_09.png"
@@ -359,7 +385,9 @@
       </div>
     </section>
 
-    <!-- ===== FULL-BLEED VIDEOS (AUTO PLAY) ===== -->
+    <!-- =======================================================
+         2) VIDEO 1
+         ======================================================= -->
     <section class="video-full" aria-label="video">
       <video class="autoplay-video"
         src="snaptik_7421006142152756488_v2.mp4"
@@ -368,9 +396,37 @@
       </video>
     </section>
 
-    <!-- Info + Process -->
+    <!-- =======================================================
+         3) HOOK (ข้อความดึงดูด) + LINE CTA
+         ======================================================= -->
+    <section class="card hook" aria-label="hook" style="margin-top:14px;">
+      <p>
+        อยากได้เม็ดที่ <span>สวยจริง</span> ในงบของคุณ?<br/>
+        ส่ง “งบ + ไซส์ + สเป็ค” ทาง LINE แล้วให้เราคัดให้
+      </p>
+      <div style="margin-top:14px; width:100%;">
+        <a id="btnLineHook" class="btn" href="https://lin.ee/HOm9i3C" rel="nofollow noopener">
+          💬 แอด LINE เพื่อให้คัดตัวเลือกให้
+        </a>
+      </div>
+    </section>
+
+    <!-- =======================================================
+         4) VIDEO 2
+         ======================================================= -->
+    <section class="video-full" aria-label="video">
+      <video class="autoplay-video"
+        src="snaptik_7587816166631066887_v2.mp4"
+        autoplay muted loop playsinline webkit-playsinline
+        preload="auto">
+      </video>
+    </section>
+
+    <!-- =======================================================
+         5) หาเพชร
+         ======================================================= -->
     <div class="grid">
-      <section class="card pad">
+      <section class="card pad" aria-label="find">
         <h2>หาเพชรอะไรได้บ้าง</h2>
         <p>
           รับจัดหาเพชรแท้ธรรมชาติ <b style="color:rgba(255,255,255,.92)">ตามสเป็คและงบของลูกค้า</b>
@@ -413,16 +469,10 @@
         </div>
       </section>
 
-      <section class="video-full" aria-label="video">
-      <video class="autoplay-video"
-        src="snaptik_7587816166631066887_v2.mp4"
-        autoplay muted loop playsinline webkit-playsinline
-        preload="auto">
-      </video>
-    </section>
-
-      
-      <aside class="card pad" id="process">
+      <!-- =======================================================
+           6) ขั้นตอน
+           ======================================================= -->
+      <aside class="card pad" id="process" aria-label="process">
         <h2>ขั้นตอนการจัดหา</h2>
         <ul class="list">
           <li class="item">
@@ -448,7 +498,9 @@
       </aside>
     </div>
 
-    <!-- Gallery -->
+    <!-- =======================================================
+         7) Gallery
+         ======================================================= -->
     <section class="card pad" id="gallery" style="margin-top:14px;">
       <h2>ตัวอย่างเพชรที่เคยจัดหา</h2>
       <p class="note">
@@ -466,7 +518,9 @@
       </div>
     </section>
 
-    <!-- FINAL CTA -->
+    <!-- =======================================================
+         8) CTA
+         ======================================================= -->
     <section class="card pad center" style="margin-top:14px;">
       <h2>เริ่มต้นคัดเพชรกับ Mongkolsiri Diamond</h2>
       <p style="max-width:720px;margin:0 auto 12px;">
@@ -497,7 +551,7 @@
       setTimeout(() => { window.location.href = LINE_URL; }, 220);
     }
 
-    ['btnLineTop','btnLineMiddle','btnLineBottom'].forEach(id=>{
+    ['btnLineTop','btnLineHook','btnLineMiddle','btnLineBottom'].forEach(id=>{
       const el = document.getElementById(id);
       if (el) el.addEventListener('click', handleLineClick);
     });
