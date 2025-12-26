@@ -267,6 +267,28 @@
     }
 
     .footer{ color: var(--muted2); font-size:12px; line-height:1.75; margin-top: 12px; }
+
+    /* ===== Fix gallery image on mobile ===== */
+.ph-single{
+  width:100%;
+  overflow:hidden;
+  border-radius:18px;
+}
+
+.ph-single img{
+  width:100%;
+  height:auto;
+  display:block;
+}
+
+/* มือถือ: คุมความสูง ไม่ให้ยาวเกินจอ */
+@media (max-width: 520px){
+  .ph-single img{
+    max-height: 70vh;      /* ปรับได้ 60–75vh */
+    object-fit: cover;
+    object-position: center;
+  }
+}
   </style>
 
   <!-- Structured Data -->
