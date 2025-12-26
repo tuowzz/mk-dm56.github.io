@@ -17,25 +17,44 @@
   <meta property="og:url" content="https://YOUR-DOMAIN-HERE/" />
   <meta property="og:image" content="https://YOUR-DOMAIN-HERE/og.jpg" />
 
-  <!-- Google Ads (ใส่ AW_ID/AW_LABEL ทีหลังได้) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-XXXXXXX"></script>
+  <!-- Google Ads (✅ ใส่ AW จริงแล้ว) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17035064059"></script>
   <script>
     // ===== CONFIG =====
-    const LINE_URL  = "https://lin.ee/HOm9i3C";
+    const LINE_URL = "https://lin.ee/HOm9i3C";
 
-    // ใส่ของจริงทีหลัง (ถ้ายังไม่มีปล่อยไว้ได้)
-    const AW_ID     = "AW-XXXXXXX";
-    const AW_LABEL  = "XXXXXXXXXXXX";
+    // ✅ ใช้ send_to แบบที่คุณให้มา
+    const ADS_SEND_TO = "AW-17035064059/53zPCNHE2OIaEPvl-bo_";
 
     window.dataLayer = window.dataLayer || [];
     function gtag(){ dataLayer.push(arguments); }
     gtag('js', new Date());
+    gtag('config', 'AW-17035064059', { anonymize_ip: true });
 
-    if (AW_ID && AW_ID.startsWith("AW-")) gtag('config', AW_ID, { anonymize_ip: true });
+    /**
+     * ✅ Track LINE click (ทุกปุ่ม)
+     * - ยิง conversion ก่อน แล้วค่อย redirect
+     * - กันพังเมื่อ gtag ยังไม่โหลด
+     */
+    function trackLineClick(e, valueTHB){
+      try { if (e && e.preventDefault) e.preventDefault(); } catch(_){}
 
-    function fireAdsConversion(){
-      if (!AW_ID || !AW_LABEL || !AW_ID.startsWith("AW-") || AW_LABEL.trim() === "") return;
-      try { gtag('event', 'conversion', { send_to: `${AW_ID}/${AW_LABEL}` }); } catch(e){}
+      const v = Number(valueTHB || 0);
+
+      // ยิง conversion
+      try{
+        if (window.gtag){
+          gtag('event','conversion',{
+            'send_to': ADS_SEND_TO,
+            'value': v,
+            'currency': 'THB'
+          });
+        }
+      }catch(_){}
+
+      // หน่วงให้ยิงทันก่อนกระโดดไป LINE
+      setTimeout(() => { window.location.href = LINE_URL; }, 260);
+      return false;
     }
   </script>
 
@@ -200,7 +219,7 @@
       line-height:1.6;
     }
 
-    /* STACK ONLY (ไม่แบ่ง 2 คอลัมน์) */
+    /* STACK ONLY */
     .grid{
       display:grid;
       grid-template-columns: 1fr;
@@ -219,10 +238,9 @@
     .item span{ display:block; color: var(--muted2); font-size:13.5px; line-height:1.65; }
 
     .note{ color: var(--muted2); font-size: 12.5px; line-height:1.7; margin-top: 10px; }
-    .mono{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; }
     .center{ text-align:center; }
 
-    /* ===== Gallery (single image stacked) ===== */
+    /* Gallery */
     .gallery-list{
       display:flex;
       flex-direction:column;
@@ -258,7 +276,7 @@
 
     .footer{ color: var(--muted2); font-size:12px; line-height:1.75; margin-top: 12px; }
 
-    /* ===== FULL-BLEED VIDEO (Mobile full screen) + Desktop 9:16 ===== */
+    /* Video */
     .video-full{
       width:100vw;
       margin-left: calc(50% - 50vw);
@@ -270,8 +288,6 @@
       border-top:1px solid rgba(255,255,255,.10);
       border-bottom:1px solid rgba(255,255,255,.10);
     }
-
-    /* Desktop/Tablet: กรอบ 9:16 กลางจอ */
     @media (min-width: 821px){
       .video-full{
         height:auto;
@@ -293,8 +309,6 @@
         box-shadow: 0 18px 55px rgba(0,0,0,.45);
       }
     }
-
-    /* Mobile: เต็มจอ */
     @media (max-width: 820px){
       .video-full{
         height: 92svh;
@@ -314,9 +328,10 @@
       }
     }
 
-    /* ===== Hook card (ข้อความดึงดูดระหว่างคลิป) ===== */
+    /* Hook */
     .hook{
       display:flex;
+      flex-direction:column;
       align-items:center;
       justify-content:center;
       text-align:center;
@@ -334,13 +349,11 @@
       color: rgba(214,184,115,.95);
     }
 
-    /* ===== HIDE LOW-IMPACT GREY TEXT ===== */
-.note,
-.footer{
-  display:none;
-}
-
-    
+    /* HIDE LOW-IMPACT GREY TEXT */
+    .note,
+    .footer{
+      display:none;
+    }
   </style>
 
   <!-- Structured Data -->
@@ -375,9 +388,7 @@
       <div class="chip">ทัก LINE ได้เลยนะคะ</div>
     </div>
 
-    <!-- =======================================================
-         1) HERO
-         ======================================================= -->
+    <!-- 1) HERO -->
     <section class="card hero" aria-label="Hero">
       <img
         src="ChatGPT Image 26 ธ.ค. 2568 14_19_09.png"
@@ -387,15 +398,16 @@
       <div class="hero-content">
         <div class="hero-title">รับจัดหาเพชรแท้ธรรมชาติ • Private Service</div>
         <div class="hero-sub">คัดสเป็คสวย • 0.30–20 กะรัต • NO BGM • ส่งรูป/วิดีโอ/Certificate ให้ดูก่อนตัดสินใจ</div>
-        <a id="btnLineTop" class="btn" href="https://lin.ee/HOm9i3C" rel="nofollow noopener">
+
+        <!-- ✅ TRACK: LINE TOP -->
+        <a id="btnLineTop" class="btn" href="https://lin.ee/HOm9i3C" rel="nofollow noopener"
+           onclick="return trackLineClick(event, 0);">
           💬 แอด LINE เพื่อขอใบเสนอราคา
         </a>
       </div>
     </section>
 
-    <!-- =======================================================
-         2) VIDEO 1
-         ======================================================= -->
+    <!-- 2) VIDEO 1 -->
     <section class="video-full" aria-label="video">
       <video class="autoplay-video"
         src="snaptik_7421006142152756488_v2.mp4"
@@ -404,24 +416,23 @@
       </video>
     </section>
 
-    <!-- =======================================================
-         3) HOOK (ข้อความดึงดูด) + LINE CTA
-         ======================================================= -->
+    <!-- 3) HOOK + LINE CTA -->
     <section class="card hook" aria-label="hook" style="margin-top:14px;">
       <p>
         อยากได้เม็ดที่ <span>สวยจริง</span> ในงบของคุณ?<br/>
         ส่ง “งบ + ไซส์ + สเป็ค” ทาง LINE แล้วให้เราคัดให้
       </p>
+
       <div style="margin-top:14px; width:100%;">
-        <a id="btnLineHook" class="btn" href="https://lin.ee/HOm9i3C" rel="nofollow noopener">
+        <!-- ✅ TRACK: LINE HOOK -->
+        <a id="btnLineHook" class="btn" href="https://lin.ee/HOm9i3C" rel="nofollow noopener"
+           onclick="return trackLineClick(event, 0);">
           💬 แอด LINE เพื่อให้คัดตัวเลือกให้
         </a>
       </div>
     </section>
 
-    <!-- =======================================================
-         4) VIDEO 2
-         ======================================================= -->
+    <!-- 4) VIDEO 2 -->
     <section class="video-full" aria-label="video">
       <video class="autoplay-video"
         src="snaptik_7587816166631066887_v2.mp4"
@@ -430,9 +441,7 @@
       </video>
     </section>
 
-    <!-- =======================================================
-         5) หาเพชร
-         ======================================================= -->
+    <!-- 5) หาเพชร -->
     <div class="grid">
       <section class="card pad" aria-label="find">
         <h2>หาเพชรอะไรได้บ้าง</h2>
@@ -454,66 +463,42 @@
         <ul class="list">
           <li class="item">
             <strong>ตามขนาด (Carat)</strong>
-            <span>0.30–0.50 • 0.70–1.00 • 1.50–3.00 • 5.00–20.00 (Private/Investment)</span>
+            <span>0.30–0.50 • 0.70–1.00 • 1.50–3.00 • 5.00–20.00</span>
           </li>
           <li class="item">
             <strong>ตามสเป็คคุณภาพ</strong>
-            <span>Color: D–M • Clarity: IF/VVS/VS/SI • Cut: EX–VG (เลือกตามงบ)</span>
+            <span>Color: D–M • Clarity: IF/VVS/VS/SI • Cut: EX–VG</span>
           </li>
           <li class="item">
             <strong>ตามวัตถุประสงค์</strong>
-            <span>แหวนหมั้น/แต่งงาน • สะสม/ลงทุน • อัปเกรดเพชรเดิม • ไซส์/สเป็คพิเศษ</span>
+            <span>แหวนหมั้น/แต่งงาน • สะสม/ลงทุน • ไซส์/สเป็คพิเศษ</span>
           </li>
         </ul>
 
         <div style="margin-top:14px;">
-          <a id="btnLineMiddle" class="btn" href="https://lin.ee/HOm9i3C" rel="nofollow noopener">
+          <!-- ✅ TRACK: LINE MIDDLE -->
+          <a id="btnLineMiddle" class="btn" href="https://lin.ee/HOm9i3C" rel="nofollow noopener"
+             onclick="return trackLineClick(event, 0);">
             💬 แจ้งงบ + ไซส์ + สเป็ค ผ่าน LINE
           </a>
         </div>
-
-        <div class="note">
-          ข้อความแนะนำ: <span class="mono">งบ 300,000 | 1.00ct | Round | สี G | VS | ขอเม็ดสะอาด</span>
-        </div>
       </section>
 
-      <!-- =======================================================
-           6) ขั้นตอน
-           ======================================================= -->
+      <!-- 6) ขั้นตอน -->
       <aside class="card pad" id="process" aria-label="process">
         <h2>ขั้นตอนการจัดหา</h2>
         <ul class="list">
-          <li class="item">
-            <strong>1) ทัก LINE แจ้งงบ + สเป็ค</strong>
-            <span> </span>
-          </li>
-          <li class="item">
-            <strong>2) คัดตัวเลือกจากแหล่งนำเข้า</strong>
-            <span> </span>
-          </li>
-          <li class="item">
-            <strong>3) ส่งรูป/วิดีโอ + Certificate</strong>
-            <span> </span>
-          </li>
-          <li class="item">
-            <strong>4) เลือกแล้วค่อยดำเนินการ</strong>
-            <span> </span>
-          </li>
+          <li class="item"><strong>1) ทัก LINE แจ้งงบ + สเป็ค</strong><span></span></li>
+          <li class="item"><strong>2) คัดตัวเลือกจากแหล่งนำเข้า</strong><span></span></li>
+          <li class="item"><strong>3) ส่งรูป/วิดีโอ + Certificate</strong><span></span></li>
+          <li class="item"><strong>4) เลือกแล้วค่อยดำเนินการ</strong><span></span></li>
         </ul>
-
-        <div class="goldline"></div>
-        <p class="note">*หน้านี้วางโครงไว้ให้คุณเติมรูป/คลิปเพิ่มได้เองภายหลัง โดยไม่ต้องแก้โค้ดหลัก</p>
       </aside>
     </div>
 
-    <!-- =======================================================
-         7) Gallery
-         ======================================================= -->
+    <!-- 7) Gallery -->
     <section class="card pad" id="gallery" style="margin-top:14px;">
       <h2>ตัวอย่างเพชรที่เคยจัดหา</h2>
-      <p class="note">
-        *ภาพด้านล่างเป็นตัวอย่างงานจริง สามารถขอรูป/วิดีโอเพิ่มเติมของแต่ละเม็ดผ่าน LINE ได้
-      </p>
 
       <div class="gallery-list">
         <div class="ph-single">
@@ -526,44 +511,23 @@
       </div>
     </section>
 
-    <!-- =======================================================
-         8) CTA
-         ======================================================= -->
+    <!-- 8) CTA -->
     <section class="card pad center" style="margin-top:14px;">
       <h2>เริ่มต้นคัดเพชรกับ Mongkolsiri Diamond</h2>
       <p style="max-width:720px;margin:0 auto 12px;">
         แอด LINE แล้วส่ง “งบ + ไซส์ + สเป็ค” เราจะคัดตัวเลือกที่เหมาะที่สุดให้
-        พร้อมข้อมูลประกอบการตัดสินใจก่อนดำเนินการ
       </p>
 
-      <a id="btnLineBottom" class="btn" href="https://lin.ee/HOm9i3C" rel="nofollow noopener">
+      <!-- ✅ TRACK: LINE BOTTOM -->
+      <a id="btnLineBottom" class="btn" href="https://lin.ee/HOm9i3C" rel="nofollow noopener"
+         onclick="return trackLineClick(event, 0);">
         💬 แอด LINE ปรึกษาฟรี
       </a>
-
-      <div class="goldline"></div>
-
-      <div class="footer">
-        <div><b>Privacy</b>: วัดผลเฉพาะการคลิกปุ่มเพื่อวัดผลโฆษณา (ตามการตั้งค่า Google Ads ของเจ้าของเว็บ)</div>
-        <div>© <span id="year"></span> Mongkolsiri Diamond</div>
-      </div>
     </section>
 
   </div>
 
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    function handleLineClick(e){
-      try { fireAdsConversion(); } catch(err) {}
-      if (e && e.preventDefault) e.preventDefault();
-      setTimeout(() => { window.location.href = LINE_URL; }, 220);
-    }
-
-    ['btnLineTop','btnLineHook','btnLineMiddle','btnLineBottom'].forEach(id=>{
-      const el = document.getElementById(id);
-      if (el) el.addEventListener('click', handleLineClick);
-    });
-
     // ===== Autoplay hardening (iOS/Android) =====
     (function(){
       const videos = Array.from(document.querySelectorAll('.autoplay-video'));
