@@ -254,7 +254,42 @@
     }
 
     .footer{ color: var(--muted2); font-size:12px; line-height:1.75; margin-top: 12px; }
+
   </style>
+
+  <style>
+/* ===== Full Mobile Video ===== */
+.video-full{
+  width:100%;
+  margin:14px 0;
+  border-radius:18px;
+  overflow:hidden;
+  background:#000;
+  border:1px solid rgba(255,255,255,.12);
+}
+
+/* ปกติ (Desktop / Tablet) */
+.video-full video{
+  width:100%;
+  height:auto;
+  display:block;
+}
+
+/* มือถือ: เต็มจอแบบ cinematic */
+@media (max-width:520px){
+  .video-full{
+    border-radius:0;
+    margin-left:-16px;
+    margin-right:-16px;
+  }
+  .video-full video{
+    height:85vh;           /* ปรับได้ 75–90vh */
+    object-fit:cover;
+    object-position:center;
+  }
+}
+</style>
+
 
   <!-- Structured Data -->
   <script type="application/ld+json">
@@ -304,25 +339,29 @@
       </div>
     </section>
 
-    <!-- ================= VIDEO (Diamond Showcase) ================= -->
-<section class="card pad" style="margin-top:14px;">
-  <h2>วิดีโอตัวอย่างเพชรจริง</h2>
-  <p class="note">
-    *วิดีโอเพชรจริงจากงานจัดหา สามารถขอวิดีโอเพิ่มเติมของแต่ละเม็ดผ่าน LINE ได้
-  </p>
-
-  <div class="video-single">
-    <video
-      src="snaptik_7421006142152756488_v2.mp4"
-      controls
-      playsinline
-      muted
-      preload="metadata"
-      poster="">
-      เบราว์เซอร์ของคุณไม่รองรับการเล่นวิดีโอ
-    </video>
-  </div>
+   <!-- ================= FULL MOBILE VIDEO ================= -->
+<section class="video-full">
+  <video
+    src="snaptik_7421006142152756488_v2.mp4"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="auto">
+  </video>
 </section>
+
+<section class="video-full">
+  <video
+    src="snaptik_7587816166631066887_v2.mp4"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="auto">
+  </video>
+</section>
+
 
 
     <!-- Info + Process -->
