@@ -1,236 +1,465 @@
 <!doctype html>
 <html lang="th">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>รับจัดหาเพชรแท้ธรรมชาติ | Mongkolsiri Diamond โดยคุณเมล์</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>รับจัดหาเพชรแท้ธรรมชาติ | Mongkolsiri Diamond</title>
 
-<meta name="description" content="คุณเมล์ เจ้าของร้าน Mongkolsiri Diamond รับจัดหาเพชรแท้ธรรมชาติ 0.30–20 กะรัต คัดสเป็คสวย NO BGM นำเข้าเอง คุยผ่าน LINE แบบส่วนตัว">
-<link rel="canonical" href="https://YOUR-DOMAIN-HERE/">
+  <!-- SEO -->
+  <meta name="description" content="Mongkolsiri Diamond รับจัดหาเพชรแท้ธรรมชาติ 0.30–20 กะรัต คัดสเป็คสวย NO BGM นำเข้าเอง คุยผ่าน LINE แบบส่วนตัว (Private Service)" />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://YOUR-DOMAIN-HERE/" />
 
-<!-- Google Ads -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-XXXXXXX"></script>
-<script>
-const LINE_URL = "https://lin.ee/XXXXXXX";
-const AW_ID = "AW-XXXXXXX";
-const AW_LABEL = "XXXXXXXXXXXX";
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="รับจัดหาเพชรแท้ธรรมชาติ | Mongkolsiri Diamond" />
+  <meta property="og:description" content="Private Diamond Sourcing • 0.30–20 กะรัต • NO BGM • Natural Diamond 100%" />
+  <meta property="og:url" content="https://YOUR-DOMAIN-HERE/" />
+  <meta property="og:image" content="https://YOUR-DOMAIN-HERE/og.jpg" />
 
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', AW_ID, { anonymize_ip:true });
-</script>
+  <!-- Google Ads (ใส่ AW_ID/AW_LABEL ทีหลังได้) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-XXXXXXX"></script>
+  <script>
+    // ===== CONFIG =====
+    const LINE_URL  = "https://lin.ee/HOm9i3C";
 
-<style>
-:root{
-  --bg:#07070a;
-  --card:rgba(255,255,255,.05);
-  --border:rgba(255,255,255,.10);
-  --text:#f8fafc;
-  --muted:rgba(248,250,252,.72);
-  --gold:#d6b873;
-  --line:#06c755;
-  --radius:22px;
-}
-*{box-sizing:border-box}
-body{
-  margin:0;
-  font-family: system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans Thai",Arial,sans-serif;
-  background:radial-gradient(1000px 600px at 10% 0%,rgba(214,184,115,.12),transparent 60%),#07070a;
-  color:var(--text);
-}
-.wrap{max-width:980px;margin:auto;padding:20px 16px 80px}
-.card{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:var(--radius);
-  padding:20px;
-  margin-bottom:16px;
-}
-h1{font-size:clamp(28px,7vw,42px);margin:0 0 12px}
-h2{font-size:clamp(18px,4.8vw,22px);margin:0 0 10px}
-h3{font-size:16px;margin:0 0 6px}
-p{color:var(--muted);line-height:1.75;font-size:15.5px;margin:0 0 12px}
-.badge{
-  display:inline-block;
-  border:1px solid rgba(214,184,115,.35);
-  padding:7px 12px;
-  border-radius:999px;
-  font-size:12px;
-  margin:4px 6px 0 0;
-}
-.btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  min-height:54px;
-  padding:16px 18px;
-  border-radius:16px;
-  font-weight:900;
-  text-decoration:none;
-  background:linear-gradient(180deg,#06c755,#05b84d);
-  color:#06210f;
-  box-shadow:0 18px 40px rgba(6,199,85,.18);
-}
-.center{text-align:center}
-.list{list-style:none;padding:0;margin:0}
-.list li{
-  border:1px solid var(--border);
-  border-radius:16px;
-  padding:14px;
-  margin-bottom:10px;
-  background:rgba(255,255,255,.03);
-}
-.small{font-size:12.5px;color:var(--muted)}
-.goldline{
-  height:1px;
-  background:linear-gradient(90deg,transparent,rgba(214,184,115,.8),transparent);
-  margin:14px 0;
-}
-.grid{
-  display:grid;
-  gap:12px;
-}
-@media(min-width:820px){
-  .grid{grid-template-columns:1fr 1fr}
-}
-</style>
+    // ใส่ของจริงทีหลัง (ถ้ายังไม่มีปล่อยไว้ได้)
+    const AW_ID     = "AW-XXXXXXX";
+    const AW_LABEL  = "XXXXXXXXXXXX";
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    // ถ้าใส่ AW_ID จริงแล้ว ระบบจะเริ่มเก็บค่า
+    if (AW_ID && AW_ID.startsWith("AW-")) gtag('config', AW_ID, { anonymize_ip: true });
+
+    function fireAdsConversion(){
+      if (!AW_ID || !AW_LABEL || !AW_ID.startsWith("AW-") || AW_LABEL.trim() === "") return;
+      try { gtag('event', 'conversion', { send_to: `${AW_ID}/${AW_LABEL}` }); } catch(e){}
+    }
+  </script>
+
+  <style>
+    :root{
+      --bg:#07070a;
+      --panel:rgba(255,255,255,.06);
+      --panel2:rgba(255,255,255,.04);
+      --border:rgba(255,255,255,.10);
+      --text:#f7f7fb;
+      --muted:rgba(247,247,251,.72);
+      --muted2:rgba(247,247,251,.56);
+      --gold:#d6b873;
+      --gold2:#b9974c;
+      --line:#06c755;
+      --shadow: 0 18px 55px rgba(0,0,0,.45);
+      --radius: 22px;
+    }
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      color:var(--text);
+      background:
+        radial-gradient(1000px 600px at 12% 0%, rgba(214,184,115,.14) 0%, rgba(7,7,10,0) 55%),
+        radial-gradient(900px 600px at 95% 10%, rgba(109,86,39,.16) 0%, rgba(7,7,10,0) 58%),
+        linear-gradient(180deg, #060609 0%, #07070a 55%, #07070a 100%);
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans Thai", Arial, sans-serif;
+      letter-spacing: .1px;
+    }
+    .wrap{ max-width: 980px; margin:0 auto; padding: 18px 16px 92px; }
+
+    /* Top bar */
+    .topbar{
+      display:flex; justify-content:space-between; align-items:center; gap:12px;
+      margin: 6px 0 14px;
+    }
+    .brand{ display:flex; align-items:center; gap:12px; min-width:0; }
+    .mark{
+      width:42px; height:42px; border-radius:16px;
+      background:
+        radial-gradient(12px 12px at 30% 30%, rgba(255,255,255,.55) 0%, rgba(255,255,255,0) 60%),
+        linear-gradient(135deg, rgba(214,184,115,1) 0%, rgba(185,151,76,1) 55%, rgba(214,184,115,1) 100%);
+      box-shadow: 0 18px 40px rgba(214,184,115,.12);
+    }
+    .brand-title{ display:flex; flex-direction:column; gap:2px; min-width:0; }
+    .brand-title strong{
+      font-size:13px; color:rgba(255,255,255,.92);
+      white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+    }
+    .brand-title span{
+      font-size:12px; color:var(--muted2);
+      white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+    }
+    .chip{
+      font-size:12px; color: rgba(7,7,10,.92);
+      background: linear-gradient(180deg, rgba(214,184,115,1), rgba(185,151,76,1));
+      padding:7px 10px; border-radius:999px; font-weight:900; letter-spacing:.2px;
+      box-shadow: 0 14px 30px rgba(214,184,115,.10);
+      white-space: nowrap;
+    }
+
+    /* Cards */
+    .card{
+      background: linear-gradient(180deg, var(--panel) 0%, var(--panel2) 100%);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+      overflow:hidden;
+    }
+    .pad{ padding:18px; }
+    @media (min-width:720px){ .pad{ padding:22px; } }
+
+    /* Typography */
+    h1{
+      margin:0 0 10px;
+      font-size: clamp(24px, 6vw, 34px);
+      line-height:1.15;
+      letter-spacing:-.2px;
+    }
+    h2{
+      margin:0 0 10px;
+      font-size: clamp(18px, 4.8vw, 22px);
+      line-height:1.25;
+    }
+    p{
+      margin:0 0 12px;
+      color: var(--muted);
+      font-size: 15.5px;
+      line-height: 1.75;
+    }
+
+    .badges{ display:flex; flex-wrap:wrap; gap:8px; margin-top: 10px; }
+    .badge{
+      font-size:12px;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid rgba(214,184,115,.25);
+      background: rgba(214,184,115,.08);
+      color: rgba(255,255,255,.86);
+      white-space:nowrap;
+    }
+
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      min-height:54px;
+      padding:16px 18px;
+      border-radius:16px;
+      font-weight:900;
+      text-decoration:none;
+      background: linear-gradient(180deg, rgba(6,199,85,1), rgba(6,199,85,.86));
+      border:1px solid rgba(6,199,85,.30);
+      color:#061c10;
+      box-shadow: 0 18px 40px rgba(6,199,85,.16);
+      user-select:none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .btn:active{ transform: translateY(1px); }
+
+    .goldline{
+      height:1px;
+      background: linear-gradient(90deg, rgba(214,184,115,0) 0%, rgba(214,184,115,.75) 50%, rgba(214,184,115,0) 100%);
+      margin: 14px 0;
+      opacity: .9;
+    }
+
+    /* Hero image */
+    .hero{ position:relative; }
+    .hero img{
+      width:100%;
+      display:block;
+      height:auto;
+    }
+    @media (max-width:520px){
+      .hero img{
+        max-height: 66vh;
+        object-fit: cover;
+        object-position: top center;
+      }
+    }
+    .hero::after{
+      content:"";
+      position:absolute; inset:0;
+      background: linear-gradient(180deg, rgba(0,0,0,.30) 0%, rgba(0,0,0,.55) 60%, rgba(0,0,0,.72) 100%);
+      pointer-events:none;
+    }
+    .hero-content{
+      position:absolute; inset:auto 0 0 0;
+      padding: 14px 14px 16px;
+      z-index: 2;
+    }
+    .hero-title{
+      margin:0 0 6px;
+      font-size: clamp(20px, 5.2vw, 32px);
+      line-height:1.15;
+      letter-spacing: -.2px;
+    }
+    .hero-sub{
+      margin:0 0 10px;
+      color: rgba(247,247,251,.82);
+      font-size: 13.5px;
+      line-height:1.6;
+    }
+
+    /* Layout blocks */
+    .grid{ display:grid; gap:14px; margin-top:14px; }
+    @media (min-width: 900px){ .grid{ grid-template-columns: 1.05fr .95fr; } }
+
+    .list{ margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:10px; }
+    .item{
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      border-radius:16px;
+      padding:14px 14px;
+    }
+    .item strong{ display:block; font-size:14px; color: rgba(255,255,255,.92); margin-bottom:4px; }
+    .item span{ display:block; color: var(--muted2); font-size:13.5px; line-height:1.65; }
+
+    .note{ color: var(--muted2); font-size: 12.5px; line-height:1.7; margin-top: 10px; }
+    .mono{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; }
+    .center{ text-align:center; }
+
+    /* Gallery placeholders */
+    .gallery-grid{
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap:10px;
+      margin-top:12px;
+    }
+    @media(min-width:720px){
+      .gallery-grid{ grid-template-columns: repeat(3, 1fr); }
+    }
+    .ph{
+      aspect-ratio: 1 / 1;
+      border-radius:14px;
+      border:1px dashed rgba(255,255,255,.22);
+      background: rgba(255,255,255,.03);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color: rgba(255,255,255,.42);
+      font-size:12px;
+      overflow:hidden;
+    }
+    .ph img{ width:100%; height:100%; object-fit:cover; display:block; }
+
+    /* Video placeholders */
+    .video-grid{ display:grid; gap:12px; margin-top:12px; }
+    @media(min-width:720px){ .video-grid{ grid-template-columns:1fr 1fr; } }
+    .video-ph{
+      aspect-ratio: 16 / 9;
+      border-radius:16px;
+      border:1px dashed rgba(255,255,255,.22);
+      background: rgba(255,255,255,.03);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color: rgba(255,255,255,.42);
+      font-size:12px;
+      overflow:hidden;
+    }
+    .video-ph video, .video-ph iframe{
+      width:100%;
+      height:100%;
+      border:0;
+      display:block;
+    }
+
+    .footer{ color: var(--muted2); font-size:12px; line-height:1.75; margin-top: 12px; }
+  </style>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Service",
+    "name":"Private Diamond Sourcing | Mongkolsiri Diamond",
+    "serviceType":"Diamond sourcing",
+    "areaServed":"TH",
+    "description":"รับจัดหาเพชรแท้ธรรมชาติ 0.30–20 กะรัต คัดสเป็คสวย NO BGM นำเข้าเอง คุยผ่าน LINE แบบส่วนตัว",
+    "provider":{
+      "@type":"Organization",
+      "name":"Mongkolsiri Diamond",
+      "url":"https://YOUR-DOMAIN-HERE/"
+    }
+  }
+  </script>
 </head>
 
 <body>
-<div class="wrap">
+  <div class="wrap">
 
-<!-- ================= TOP / OWNER INTRO ================= -->
-<section class="card">
-  <h1>รับจัดหาเพชรแท้ธรรมชาติ<br>แบบ Private Service</h1>
-  <p>
-    ดิฉันชื่อ <b style="color:#fff">คุณเมล์</b>  
-    เป็น <b>เจ้าของร้านเพชร Mongkolsiri Diamond</b>  
-    ให้บริการรับจัดหาเพชรแท้ธรรมชาติจากแหล่งนำเข้าโดยตรง
-  </p>
-  <p>
-    ลูกค้าจะได้คุยกับเจ้าของร้านโดยตรง  
-    ไม่ใช่นายหน้า ไม่ใช่ระบบอัตโนมัติ  
-    เน้นคัดเพชร “สวยจริง ไม่มีตำหนิสีดำ (NO BGM)”
-  </p>
-
-  <div>
-    <span class="badge">Natural Diamond 100%</span>
-    <span class="badge">0.30 – 20 กะรัต</span>
-    <span class="badge">NO BGM</span>
-    <span class="badge">Mongkolsiri Diamond</span>
-  </div>
-
-  <!-- CTA TOP -->
-  <div style="margin-top:14px">
-    <a href="#" class="btn" id="lineTop">💬 แอด LINE คุยกับคุณเมล์โดยตรง</a>
-  </div>
-</section>
-
-<!-- ================= WHAT DIAMONDS CAN WE SOURCE ================= -->
-<section class="card">
-  <h2>รับจัดหาเพชรประเภทใดบ้าง</h2>
-  <p>
-    บริการนี้เป็นการ <b>จัดหาเพชรตามสเป็คของลูกค้า</b>  
-    ไม่จำกัดเฉพาะของที่ร้านมีหน้าร้าน
-  </p>
-
-  <div class="grid">
-    <div>
-      <h3>🔹 ตามขนาด (Carat)</h3>
-      <ul class="list">
-        <li>0.30 – 0.50 กะรัต (เริ่มต้น / แหวนหมั้น)</li>
-        <li>0.70 – 1.00 กะรัต (ยอดนิยม)</li>
-        <li>1.50 – 3.00 กะรัต (Luxury)</li>
-        <li>5.00 – 20.00 กะรัต (Private / Investment)</li>
-      </ul>
+    <div class="topbar">
+      <div class="brand">
+        <div class="mark" aria-hidden="true"></div>
+        <div class="brand-title">
+          <strong>Mongkolsiri Diamond</strong>
+          <span>Private Diamond Sourcing • LINE Only</span>
+        </div>
+      </div>
+      <div class="chip">เน้น LINE • ไม่โทร</div>
     </div>
 
-    <div>
-      <h3>🔹 ตามรูปทรง (Shape)</h3>
-      <ul class="list">
-        <li>Round Brilliant</li>
-        <li>Oval / Cushion / Emerald</li>
-        <li>Princess / Radiant</li>
-        <li>Pear / Marquise / Heart</li>
-      </ul>
+    <!-- HERO (image) + LINE button (TOP) -->
+    <section class="card hero" aria-label="Hero">
+      <img
+        src="ChatGPT Image 26 ธ.ค. 2568 14_19_09.png"
+        alt="รับจัดหาเพชรแท้ธรรมชาติ แบบ Private Service - Mongkolsiri Diamond"
+        loading="eager"
+      />
+      <div class="hero-content">
+        <div class="hero-title">รับจัดหาเพชรแท้ธรรมชาติ • Private Service</div>
+        <div class="hero-sub">คัดสเป็คสวย • 0.30–20 กะรัต • NO BGM • ส่งรูป/วิดีโอ/Certificate ให้ดูก่อนตัดสินใจ</div>
+        <a id="btnLineTop" class="btn" href="https://lin.ee/HOm9i3C" rel="nofollow noopener">
+          💬 แอด LINE เพื่อขอใบเสนอราคา
+        </a>
+      </div>
+    </section>
+
+    <!-- Info + Process -->
+    <div class="grid">
+      <section class="card pad">
+        <h2>หาเพชรอะไรได้บ้าง</h2>
+        <p>
+          รับจัดหาเพชรแท้ธรรมชาติ <b style="color:rgba(255,255,255,.92)">ตามสเป็คและงบของลูกค้า</b>
+          เหมาะสำหรับแหวนหมั้น/แต่งงาน เพชรสะสม/ลงทุน และสเป็คพิเศษ
+        </p>
+
+        <div class="badges">
+          <div class="badge">Natural Diamond 100%</div>
+          <div class="badge">0.30 – 20 กะรัต</div>
+          <div class="badge">NO BGM (คัดเม็ดสะอาด)</div>
+          <div class="badge">Round / Oval / Cushion / Emerald</div>
+          <div class="badge">Princess / Radiant / Pear / Heart</div>
+        </div>
+
+        <div class="goldline"></div>
+
+        <ul class="list">
+          <li class="item">
+            <strong>ตามขนาด (Carat)</strong>
+            <span>0.30–0.50 • 0.70–1.00 • 1.50–3.00 • 5.00–20.00 (Private/Investment)</span>
+          </li>
+          <li class="item">
+            <strong>ตามสเป็คคุณภาพ</strong>
+            <span>Color: D–M • Clarity: IF/VVS/VS/SI • Cut: EX–VG (เลือกตามงบ)</span>
+          </li>
+          <li class="item">
+            <strong>ตามวัตถุประสงค์</strong>
+            <span>แหวนหมั้น/แต่งงาน • สะสม/ลงทุน • อัปเกรดเพชรเดิม • ไซส์/สเป็คพิเศษ</span>
+          </li>
+        </ul>
+
+        <!-- LINE button (MIDDLE) -->
+        <div style="margin-top:14px;">
+          <a id="btnLineMiddle" class="btn" href="https://lin.ee/HOm9i3C" rel="nofollow noopener">
+            💬 แจ้งงบ + ไซส์ + สเป็ค ผ่าน LINE
+          </a>
+        </div>
+
+        <div class="note">
+          ข้อความแนะนำ: <span class="mono">งบ 300,000 | 1.00ct | Round | สี G | VS | ขอเม็ดสะอาด</span>
+        </div>
+      </section>
+
+      <aside class="card pad" id="process">
+        <h2>ขั้นตอนการจัดหา</h2>
+        <ul class="list">
+          <li class="item">
+            <strong>1) ทัก LINE แจ้งงบ + สเป็ค</strong>
+            <span>ระบุไซส์/รูปทรง/สี/ความสะอาด หรือบอกว่า “ขอแบบสวยที่สุดในงบ”</span>
+          </li>
+          <li class="item">
+            <strong>2) คัดตัวเลือกจากแหล่งนำเข้า</strong>
+            <span>เน้นคุณภาพและความสะอาดของเม็ด (NO BGM)</span>
+          </li>
+          <li class="item">
+            <strong>3) ส่งรูป/วิดีโอ + Certificate</strong>
+            <span>ให้ตรวจสอบก่อนตัดสินใจ (เช่น GIA/IGI ตามสเป็ค)</span>
+          </li>
+          <li class="item">
+            <strong>4) เลือกแล้วค่อยดำเนินการ</strong>
+            <span>คุยแบบส่วนตัว ไม่เร่ง ไม่กดดัน (LINE เป็นหลัก)</span>
+          </li>
+        </ul>
+
+        <div class="goldline"></div>
+        <p class="note">*หน้านี้วางโครงไว้ให้คุณเติมรูป/คลิปเพิ่มได้เองภายหลัง โดยไม่ต้องแก้โค้ดหลัก</p>
+      </aside>
     </div>
 
-    <div>
-      <h3>🔹 ตามสเป็คคุณภาพ</h3>
-      <ul class="list">
-        <li>Color: D – M (เลือกตามงบ)</li>
-        <li>Clarity: IF / VVS / VS / SI</li>
-        <li>Cut: Excellent – Very Good</li>
-        <li>คัดเฉพาะเม็ดสะอาด (NO BGM)</li>
-      </ul>
-    </div>
+    <!-- Gallery placeholders (เติมรูปทีหลัง) -->
+    <section class="card pad" id="gallery" style="margin-top:14px;">
+      <h2>ตัวอย่างเพชรที่เคยจัดหา (เติมรูปทีหลังได้)</h2>
+      <p class="note">*ตอนนี้เป็นช่องว่างสำหรับใส่ภาพจริง: เพชร/แหวน/Certificate/งานลูกค้า</p>
 
-    <div>
-      <h3>🔹 ตามวัตถุประสงค์</h3>
-      <ul class="list">
-        <li>แหวนหมั้น / แหวนแต่งงาน</li>
-        <li>เพชรสะสม / ลงทุน</li>
-        <li>อัปเกรดเพชรเดิม</li>
-        <li>เพชรไซส์พิเศษ (Rare Size)</li>
-      </ul>
-    </div>
+      <div class="gallery-grid">
+        <div class="ph">IMAGE 1</div>
+        <div class="ph">IMAGE 2</div>
+        <div class="ph">IMAGE 3</div>
+        <div class="ph">IMAGE 4</div>
+        <div class="ph">IMAGE 5</div>
+        <div class="ph">IMAGE 6</div>
+      </div>
+
+      <div class="note">
+        วิธีใส่รูป: เปลี่ยน <span class="mono">IMAGE 1</span> เป็น
+        <span class="mono">&lt;img src="diamond1.jpg" alt="เพชร 1 กะรัต GIA" loading="lazy"&gt;</span>
+      </div>
+    </section>
+
+    <!-- Video placeholders (เติมคลิปทีหลัง) -->
+    <section class="card pad" id="video" style="margin-top:14px;">
+      <h2>วิดีโอตัวอย่าง (เติมคลิปทีหลังได้)</h2>
+      <p class="note">*ใส่ได้ทั้งคลิปไฟล์ mp4 หรือฝัง YouTube</p>
+
+      <div class="video-grid">
+        <div class="video-ph">VIDEO 1</div>
+        <div class="video-ph">VIDEO 2</div>
+      </div>
+
+      <div class="note">
+        ตัวอย่าง (MP4): <span class="mono">&lt;video controls playsinline muted&gt;&lt;source src="video1.mp4" type="video/mp4"&gt;&lt;/video&gt;</span><br/>
+        ตัวอย่าง (YouTube): <span class="mono">&lt;iframe src="https://www.youtube.com/embed/XXXX" allowfullscreen&gt;&lt;/iframe&gt;</span>
+      </div>
+    </section>
+
+    <!-- FINAL CTA (LINE button BOTTOM) -->
+    <section class="card pad center" style="margin-top:14px;">
+      <h2>เริ่มต้นคัดเพชรกับ Mongkolsiri Diamond</h2>
+      <p style="max-width:720px;margin:0 auto 12px;">
+        แอด LINE แล้วส่ง “งบ + ไซส์ + สเป็ค” เราจะคัดตัวเลือกที่เหมาะที่สุดให้
+        พร้อมข้อมูลประกอบการตัดสินใจก่อนดำเนินการ
+      </p>
+
+      <a id="btnLineBottom" class="btn" href="https://lin.ee/HOm9i3C" rel="nofollow noopener">
+        💬 แอด LINE ปรึกษาฟรี (ไม่โทร)
+      </a>
+
+      <div class="goldline"></div>
+
+      <div class="footer">
+        <div><b>Privacy</b>: วัดผลเฉพาะการคลิกปุ่มเพื่อวัดผลโฆษณา (ตามการตั้งค่า Google Ads ของเจ้าของเว็บ)</div>
+        <div>© <span id="year"></span> Mongkolsiri Diamond</div>
+      </div>
+    </section>
+
   </div>
 
-  <!-- CTA MIDDLE -->
-  <div class="center" style="margin-top:16px">
-    <a href="#" class="btn" id="lineMiddle">💬 แจ้งสเป็คเพชรที่ต้องการผ่าน LINE</a>
-  </div>
-</section>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-<!-- ================= PROCESS ================= -->
-<section class="card">
-  <h2>ขั้นตอนการจัดหาเพชร</h2>
-  <ul class="list">
-    <li><b>1) แจ้งงบ + ไซส์ + สเป็คผ่าน LINE</b></li>
-    <li><b>2) คุณเมล์คัดเพชรจากแหล่งนำเข้าโดยตรง</b></li>
-    <li><b>3) ส่งรูป / วิดีโอ / Certificate ให้ตรวจสอบ</b></li>
-    <li><b>4) เลือกแล้วค่อยดำเนินการ (ไม่เร่ง ไม่กดดัน)</b></li>
-  </ul>
-</section>
+    function handleLineClick(e){
+      try { fireAdsConversion(); } catch(err) {}
+      if (e && e.preventDefault) e.preventDefault();
+      setTimeout(() => { window.location.href = LINE_URL; }, 220);
+    }
 
-<!-- ================= CTA BOTTOM ================= -->
-<section class="card center">
-  <h2>เริ่มต้นคัดเพชรกับ Mongkolsiri Diamond</h2>
-  <p>
-    แอด LINE เพื่อคุยกับ <b style="color:#fff">คุณเมล์</b> โดยตรง  
-    แจ้งงบ + ไซส์ + สเป็ค แล้วจะคัดตัวเลือกที่ดีที่สุดให้
-  </p>
-
-  <a href="#" class="btn" id="lineBottom">💬 แอด LINE ปรึกษาฟรี (ไม่โทร)</a>
-
-  <div class="goldline"></div>
-  <p class="small">
-    ตัวอย่างข้อความ: <br>
-    “งบ 300,000 | 1.00ct | Round | สี G | VS”
-  </p>
-
-  <p class="small">© <span id="year"></span> Mongkolsiri Diamond</p>
-</section>
-
-</div>
-
-<script>
-document.getElementById("year").textContent = new Date().getFullYear();
-
-function fireConversion(){
-  if(AW_ID && AW_LABEL){
-    gtag('event','conversion',{send_to: AW_ID + '/' + AW_LABEL});
-  }
-}
-["lineTop","lineMiddle","lineBottom"].forEach(id=>{
-  document.getElementById(id).addEventListener("click",function(e){
-    e.preventDefault();
-    fireConversion();
-    setTimeout(()=>{window.location.href = LINE_URL;},200);
-  });
-});
-</script>
-
+    ['btnLineTop','btnLineMiddle','btnLineBottom'].forEach(id=>{
+      const el = document.getElementById(id);
+      if (el) el.addEventListener('click', handleLineClick);
+    });
+  </script>
 </body>
 </html>
