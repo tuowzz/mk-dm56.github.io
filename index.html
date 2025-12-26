@@ -31,7 +31,6 @@
     function gtag(){ dataLayer.push(arguments); }
     gtag('js', new Date());
 
-    // ถ้าใส่ AW_ID จริงแล้ว ระบบจะเริ่มเก็บค่า
     if (AW_ID && AW_ID.startsWith("AW-")) gtag('config', AW_ID, { anonymize_ip: true });
 
     function fireAdsConversion(){
@@ -243,11 +242,9 @@
       background:rgba(0,0,0,.35);
       margin:0;
     }
-
-    /* มือถือ: คุมความสูง ไม่ให้ภาพยาวล้นจอ */
     @media (max-width: 520px){
       .ph-single img{
-        max-height: 70vh;      /* ปรับได้ 60–75vh */
+        max-height: 70vh;
         object-fit: cover;
         object-position: center;
       }
@@ -255,39 +252,49 @@
 
     .footer{ color: var(--muted2); font-size:12px; line-height:1.75; margin-top: 12px; }
 
-    /* ===== Full Mobile Video ===== */
-.video-full{
-  width:100%;
-  margin:14px 0;
-  border-radius:18px;
-  overflow:hidden;
-  background:#000;
-  border:1px solid rgba(255,255,255,.12);
-}
+    /* =========================================================
+       FULL-BLEED VIDEO (เต็มจอจริง ไม่โดน .wrap จำกัด)
+       ========================================================= */
+    .video-full{
+      width:100vw;
+      margin-left: calc(50% - 50vw);
+      margin-right: calc(50% - 50vw);
+      margin-top:14px;
+      margin-bottom:14px;
+      background:#000;
+      overflow:hidden;
+      border-top:1px solid rgba(255,255,255,.10);
+      border-bottom:1px solid rgba(255,255,255,.10);
+    }
 
-/* ปกติ (Desktop / Tablet) */
-.video-full video{
-  width:100%;
-  height:auto;
-  display:block;
-}
+    /* Desktop/Tablet: ไม่กินทั้งจอ */
+    .video-full{
+      height: min(72vh, 720px);
+      border-radius:18px;
+      border-left:1px solid rgba(255,255,255,.10);
+      border-right:1px solid rgba(255,255,255,.10);
+    }
 
-/* มือถือ: เต็มจอแบบ cinematic */
-@media (max-width:520px){
-  .video-full{
-    border-radius:0;
-    margin-left:-16px;
-    margin-right:-16px;
-  }
-  .video-full video{
-    height:85vh;           /* ปรับได้ 75–90vh */
-    object-fit:cover;
-    object-position:center;
-  }
-}
+    /* Mobile: เต็มจอแบบ cinematic + รองรับ safe area */
+    @media (max-width: 820px){
+      .video-full{
+        height: 92svh;
+        height: 92dvh;
+        border-radius:0;
+        border-left:none;
+        border-right:none;
+      }
+    }
 
+    .video-full video{
+      width:100%;
+      height:100%;
+      display:block;
+      object-fit: cover;
+      object-position: center;
+      background:#000;
+    }
   </style>
-
 
   <!-- Structured Data -->
   <script type="application/ld+json">
@@ -321,7 +328,7 @@
       <div class="chip">เน้น LINE • ไม่โทร</div>
     </div>
 
-    <!-- HERO (image) + LINE button (TOP) -->
+    <!-- HERO -->
     <section class="card hero" aria-label="Hero">
       <img
         src="ChatGPT Image 26 ธ.ค. 2568 14_19_09.png"
@@ -337,30 +344,22 @@
       </div>
     </section>
 
-   <!-- ================= FULL MOBILE VIDEO ================= -->
-<section class="video-full">
-  <video
-    src="snaptik_7421006142152756488_v2.mp4"
-    autoplay
-    muted
-    loop
-    playsinline
-    preload="auto">
-  </video>
-</section>
+    <!-- ===== FULL-BLEED VIDEOS (AUTO PLAY) ===== -->
+    <section class="video-full" aria-label="video">
+      <video class="autoplay-video"
+        src="snaptik_7421006142152756488_v2.mp4"
+        autoplay muted loop playsinline webkit-playsinline
+        preload="auto">
+      </video>
+    </section>
 
-<section class="video-full">
-  <video
-    src="snaptik_7587816166631066887_v2.mp4"
-    autoplay
-    muted
-    loop
-    playsinline
-    preload="auto">
-  </video>
-</section>
-
-
+    <section class="video-full" aria-label="video">
+      <video class="autoplay-video"
+        src="snaptik_7587816166631066887_v2.mp4"
+        autoplay muted loop playsinline webkit-playsinline
+        preload="auto">
+      </video>
+    </section>
 
     <!-- Info + Process -->
     <div class="grid">
@@ -396,7 +395,6 @@
           </li>
         </ul>
 
-        <!-- LINE button (MIDDLE) -->
         <div style="margin-top:14px;">
           <a id="btnLineMiddle" class="btn" href="https://lin.ee/HOm9i3C" rel="nofollow noopener">
             💬 แจ้งงบ + ไซส์ + สเป็ค ผ่าน LINE
@@ -434,7 +432,7 @@
       </aside>
     </div>
 
-    <!-- Gallery (single image) -->
+    <!-- Gallery -->
     <section class="card pad" id="gallery" style="margin-top:14px;">
       <h2>ตัวอย่างเพชรที่เคยจัดหา</h2>
       <p class="note">
@@ -452,7 +450,7 @@
       </div>
     </section>
 
-    <!-- FINAL CTA (LINE button BOTTOM) -->
+    <!-- FINAL CTA -->
     <section class="card pad center" style="margin-top:14px;">
       <h2>เริ่มต้นคัดเพชรกับ Mongkolsiri Diamond</h2>
       <p style="max-width:720px;margin:0 auto 12px;">
@@ -487,6 +485,42 @@
       const el = document.getElementById(id);
       if (el) el.addEventListener('click', handleLineClick);
     });
+
+    // ===== Autoplay hardening (iOS/Android) =====
+    (function(){
+      const videos = Array.from(document.querySelectorAll('.autoplay-video'));
+      videos.forEach(v=>{
+        v.muted = true;
+        v.playsInline = true;
+        v.setAttribute('muted','');
+        v.setAttribute('playsinline','');
+        v.setAttribute('webkit-playsinline','');
+        v.controls = false;
+      });
+
+      async function tryPlayAll(){
+        for (const v of videos){
+          try{
+            if (v.readyState < 2) v.load();
+            const p = v.play();
+            if (p && typeof p.then === 'function') await p;
+          }catch(e){}
+        }
+      }
+
+      window.addEventListener('load', tryPlayAll, { once:true });
+      document.addEventListener('visibilitychange', () => { if (!document.hidden) tryPlayAll(); });
+
+      const kick = () => { tryPlayAll(); cleanup(); };
+      const cleanup = () => {
+        ['touchstart','pointerdown','click','scroll'].forEach(ev =>
+          window.removeEventListener(ev, kick, { passive:true })
+        );
+      };
+      ['touchstart','pointerdown','click','scroll'].forEach(ev =>
+        window.addEventListener(ev, kick, { passive:true })
+      );
+    })();
   </script>
 </body>
 </html>
