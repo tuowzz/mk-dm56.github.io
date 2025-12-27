@@ -6,26 +6,44 @@
   <title>รับจัดหาเพชรแท้ธรรมชาติ | Mongkolsiri Diamond</title>
 
   <!-- SEO -->
-  <meta name="description" content="Mongkolsiri Diamond รับจัดหาเพชรแท้ธรรมชาติ 0.30–20 กะรัต คัดสเป็คสวย NO BGM นำเข้าเอง คุยผ่าน LINE แบบส่วนตัว (Private Service)" />
+  <meta name="description" content="Mongkolsiri Diamond รับจัดหาเพชรแท้ธรรมชาติ 0.30–20 กะรัต คัดสเป็คสวย NO BGM นำเข้าเอง" />
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://YOUR-DOMAIN-HERE/" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="รับจัดหาเพชรแท้ธรรมชาติ | Mongkolsiri Diamond" />
-  <meta property="og:description" content="Private Diamond Sourcing • 0.30–20 กะรัต • NO BGM • Natural Diamond 100%" />
+  <meta property="og:description" content="หาเพชรเรทดีที่สุดในตลาด • คัดเม็ดสวย NO BGM • ส่งงบ+สเป็ค ทัก LINE" />
   <meta property="og:url" content="https://YOUR-DOMAIN-HERE/" />
   <meta property="og:image" content="https://YOUR-DOMAIN-HERE/og.jpg" />
 
-  <!-- Google Ads (✅ ใส่ AW จริงแล้ว) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17035064059"></script>
+  <!-- =========================
+       PIXEL CONFIG (ใส่ไอดีจริง)
+       ========================= -->
   <script>
     // ===== CONFIG =====
     const LINE_URL = "https://lin.ee/HOm9i3C";
 
-    // ✅ ใช้ send_to แบบที่คุณให้มา
+    // Google Ads
     const ADS_SEND_TO = "AW-17035064059/53zPCNHE2OIaEPvl-bo_";
 
+    // ✅ ใส่ Pixel ID จริง
+    const FB_PIXEL_ID = "127978927946856";
+    // ✅ ใส่ TikTok Pixel ID จริง
+    const TIKTOK_PIXEL_ID = "D0EVS2JC77U9C23772EG";
+
+    // ใช้ทำ transaction_id (กัน Google แจ้ง missing id ในบางเคส)
+    function genEventId(prefix){
+      const r = Math.random().toString(36).slice(2,8);
+      return `${prefix}_${Date.now()}_${r}`;
+    }
+  </script>
+
+  <!-- =========================
+       Google Ads (✅ ใส่ AW จริงแล้ว)
+       ========================= -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17035064059"></script>
+  <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){ dataLayer.push(arguments); }
     gtag('js', new Date());
@@ -33,29 +51,104 @@
 
     /**
      * ✅ Track LINE click (ทุกปุ่ม)
-     * - ยิง conversion ก่อน แล้วค่อย redirect
-     * - กันพังเมื่อ gtag ยังไม่โหลด
+     * - ยิง Google Ads + FB Pixel + TikTok Pixel ก่อน แล้วค่อย redirect ไป LINE
+     * - เน้นคอนเวอร์ชั่น "ติดต่อ" (Lead/Contact)
      */
     function trackLineClick(e, valueTHB){
       try { if (e && e.preventDefault) e.preventDefault(); } catch(_){}
 
       const v = Number(valueTHB || 0);
+      const eventId = genEventId('line');
 
-      // ยิง conversion
+      // ---------- Google Ads Conversion ----------
       try{
         if (window.gtag){
           gtag('event','conversion',{
-            'send_to': ADS_SEND_TO,
-            'value': v,
-            'currency': 'THB'
+            send_to: ADS_SEND_TO,
+            value: v,
+            currency: 'THB',
+            transaction_id: eventId
           });
         }
       }catch(_){}
 
-      // หน่วงให้ยิงทันก่อนกระโดดไป LINE
-      setTimeout(() => { window.location.href = LINE_URL; }, 260);
+      // ---------- Facebook Pixel (Lead) ----------
+      try{
+        if (window.fbq){
+          fbq('track','Lead',{
+            content_name: 'LINE Contact',
+            value: v,
+            currency: 'THB'
+          }, { eventID: eventId });
+        }
+      }catch(_){}
+
+      // ---------- TikTok Pixel (Contact) ----------
+      try{
+        if (window.ttq){
+          ttq.track('Contact',{
+            content_name: 'LINE Contact',
+            value: v,
+            currency: 'THB'
+          });
+        }
+      }catch(_){}
+
+      // หน่วงให้ยิงทันก่อนเด้ง
+      setTimeout(() => { window.location.href = LINE_URL; }, 320);
       return false;
     }
+  </script>
+
+  <!-- =========================
+       Facebook Pixel (✅ ใส่ไอดีจริงแล้ว)
+       ========================= -->
+  <script>
+  !function(f,b,e,v,n,t,s){
+    if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)
+  }(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+
+  if (FB_PIXEL_ID) {
+    fbq('init', FB_PIXEL_ID);
+    fbq('track', 'PageView');
+  }
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+         src="https://www.facebook.com/tr?id=127978927946856&ev=PageView&noscript=1"/>
+  </noscript>
+
+  <!-- =========================
+       TikTok Pixel (✅ ใส่ไอดีจริงแล้ว)
+       ========================= -->
+  <script>
+  !function (w, d, t) {
+    w.TiktokAnalyticsObject=t;
+    var ttq=w[t]=w[t]||[];
+    ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie"];
+    ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0))) }};
+    for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);
+    ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e};
+    ttq.load=function(e,n){
+      var i="https://analytics.tiktok.com/i18n/pixel/events.js";
+      ttq._i=ttq._i||{};ttq._i[e]=[];ttq._i[e]._u=i;ttq._t=ttq._t||{};ttq._t[e]=+new Date;
+      ttq._o=ttq._o||{};ttq._o[e]=n||{};
+      var o=document.createElement("script");
+      o.type="text/javascript";o.async=!0;o.src=i+"?sdkid="+e+"&lib="+t;
+      var a=document.getElementsByTagName("script")[0];
+      a.parentNode.insertBefore(o,a)
+    };
+
+    if (TIKTOK_PIXEL_ID) {
+      ttq.load(TIKTOK_PIXEL_ID);
+      ttq.page();
+    }
+  }(window, document, 'ttq');
   </script>
 
   <style>
@@ -90,7 +183,6 @@
 
     .wrap{ max-width: 980px; margin:0 auto; padding: 18px 16px 92px; }
 
-    /* Top bar */
     .topbar{
       display:flex; justify-content:space-between; align-items:center; gap:12px;
       margin: 6px 0 14px;
@@ -120,7 +212,6 @@
       white-space: nowrap;
     }
 
-    /* Cards */
     .card{
       background: linear-gradient(180deg, var(--panel) 0%, var(--panel2) 100%);
       border:1px solid var(--border);
@@ -132,7 +223,6 @@
     .pad{ padding:18px; }
     @media (min-width:720px){ .pad{ padding:22px; } }
 
-    /* Typography */
     h2{
       margin:0 0 10px;
       font-size: clamp(18px, 4.8vw, 22px);
@@ -174,26 +264,10 @@
     @media(min-width:720px){ .btn{ width:auto; } }
     .btn:active{ transform: translateY(1px); }
 
-    .goldline{
-      height:1px;
-      background: linear-gradient(90deg, rgba(214,184,115,0) 0%, rgba(214,184,115,.75) 50%, rgba(214,184,115,0) 100%);
-      margin: 14px 0;
-      opacity: .9;
-    }
-
-    /* Hero image */
     .hero{ position:relative; }
-    .hero img{
-      width:100%;
-      display:block;
-      height:auto;
-    }
+    .hero img{ width:100%; display:block; height:auto; }
     @media (max-width:520px){
-      .hero img{
-        max-height: 66vh;
-        object-fit: cover;
-        object-position: top center;
-      }
+      .hero img{ max-height: 66vh; object-fit: cover; object-position: top center; }
     }
     .hero::after{
       content:"";
@@ -219,13 +293,7 @@
       line-height:1.6;
     }
 
-    /* STACK ONLY */
-    .grid{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap:14px;
-      margin-top:14px;
-    }
+    .grid{ display:grid; grid-template-columns: 1fr; gap:14px; margin-top:14px; }
 
     .list{ margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:10px; }
     .item{
@@ -237,16 +305,7 @@
     .item strong{ display:block; font-size:14px; color: rgba(255,255,255,.92); margin-bottom:4px; }
     .item span{ display:block; color: var(--muted2); font-size:13.5px; line-height:1.65; }
 
-    .note{ color: var(--muted2); font-size: 12.5px; line-height:1.7; margin-top: 10px; }
-    .center{ text-align:center; }
-
-    /* Gallery */
-    .gallery-list{
-      display:flex;
-      flex-direction:column;
-      gap:18px;
-      margin-top:16px;
-    }
+    .gallery-list{ display:flex; flex-direction:column; gap:18px; margin-top:16px; }
     .ph-single{
       width:100%;
       overflow:hidden;
@@ -254,29 +313,15 @@
       border:1px solid rgba(255,255,255,.12);
       background:rgba(255,255,255,.03);
     }
-    .ph-single img{
-      width:100%;
-      height:auto;
-      display:block;
-    }
+    .ph-single img{ width:100%; height:auto; display:block; }
     .img-note{
-      font-size:13px;
-      color:rgba(255,255,255,.65);
-      padding:10px 12px;
-      background:rgba(0,0,0,.35);
-      margin:0;
+      font-size:13px; color:rgba(255,255,255,.65);
+      padding:10px 12px; background:rgba(0,0,0,.35); margin:0;
     }
     @media (max-width: 520px){
-      .ph-single img{
-        max-height: 70vh;
-        object-fit: cover;
-        object-position: center;
-      }
+      .ph-single img{ max-height: 70vh; object-fit: cover; object-position: center; }
     }
 
-    .footer{ color: var(--muted2); font-size:12px; line-height:1.75; margin-top: 12px; }
-
-    /* Video */
     .video-full{
       width:100vw;
       margin-left: calc(50% - 50vw);
@@ -328,58 +373,26 @@
       }
     }
 
-    /* ===== VIP REVIEW OVERLAY ===== */
-.vip-review{
-  position: relative;
-}
+    .vip-review{ position: relative; }
+    .vip-review .vip-overlay{
+      position:absolute; inset:0;
+      display:flex; align-items:flex-end; justify-content:center;
+      padding:22px 16px;
+      background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,.55) 75%, rgba(0,0,0,.75) 100%);
+      pointer-events:none;
+    }
+    .vip-review .vip-text{ width:100%; max-width:520px; text-align:center; pointer-events:auto; }
+    .vip-title{
+      font-size: clamp(20px, 5.8vw, 28px);
+      font-weight:900;
+      line-height:1.25;
+      color:#fff;
+      margin-bottom:6px;
+    }
+    .vip-title span{ color: var(--gold); }
+    .vip-sub{ font-size:14px; color: rgba(255,255,255,.85); margin-bottom:14px; }
+    .vip-btn{ width:100%; }
 
-.vip-review .vip-overlay{
-  position:absolute;
-  inset:0;
-  display:flex;
-  align-items:flex-end;
-  justify-content:center;
-  padding:22px 16px;
-  background: linear-gradient(
-    180deg,
-    rgba(0,0,0,0) 40%,
-    rgba(0,0,0,.55) 75%,
-    rgba(0,0,0,.75) 100%
-  );
-  pointer-events:none;
-}
-
-.vip-review .vip-text{
-  width:100%;
-  max-width:520px;
-  text-align:center;
-  pointer-events:auto;
-}
-
-.vip-title{
-  font-size: clamp(20px, 5.8vw, 28px);
-  font-weight:900;
-  line-height:1.25;
-  color:#fff;
-  margin-bottom:6px;
-}
-
-.vip-title span{
-  color: var(--gold);
-}
-
-.vip-sub{
-  font-size:14px;
-  color: rgba(255,255,255,.85);
-  margin-bottom:14px;
-}
-
-.vip-btn{
-  width:100%;
-}
-
-
-    /* Hook */
     .hook{
       display:flex;
       flex-direction:column;
@@ -396,15 +409,9 @@
       line-height:1.55;
       font-size: clamp(16px, 4.8vw, 20px);
     }
-    .hook p span{
-      color: rgba(214,184,115,.95);
-    }
+    .hook p span{ color: rgba(214,184,115,.95); }
 
-    /* HIDE LOW-IMPACT GREY TEXT */
-    .note,
-    .footer{
-      display:none;
-    }
+    .note, .footer{ display:none; }
   </style>
 
   <!-- Structured Data -->
@@ -415,7 +422,7 @@
     "name":"Private Diamond Sourcing | Mongkolsiri Diamond",
     "serviceType":"Diamond sourcing",
     "areaServed":"TH",
-    "description":"รับจัดหาเพชรแท้ธรรมชาติ 0.30–20 กะรัต คัดสเป็คสวย NO BGM นำเข้าเอง คุยผ่าน LINE แบบส่วนตัว",
+    "description":"รับจัดหาเพชรแท้ธรรมชาติ 0.30–20 กะรัต คัดสเป็คสวย NO BGM นำเข้าเอง",
     "provider":{
       "@type":"Organization",
       "name":"Mongkolsiri Diamond",
@@ -443,14 +450,13 @@
     <section class="card hero" aria-label="Hero">
       <img
         src="ChatGPT Image 26 ธ.ค. 2568 14_19_09.png"
-        alt="รับจัดหาเพชรแท้ธรรมชาติ แบบ Private Service - Mongkolsiri Diamond"
+        alt="รับจัดหาเพชรแท้ธรรมชาติ | Mongkolsiri Diamond"
         loading="eager"
       />
       <div class="hero-content">
-        <div class="hero-title">รับจัดหาเพชรแท้ธรรมชาติ • Private Service</div>
-        <div class="hero-sub">คัดสเป็คสวย • 0.30–20 กะรัต • NO BGM • ส่งรูป/วิดีโอ/Certificate ให้ดูก่อนตัดสินใจ</div>
+        <div class="hero-title">รับจัดหาเพชรแท้ธรรมชาติ</div>
+        <div class="hero-sub">หาเรทดีที่สุดในตลาด • คัดเม็ดสวย NO BGM • ส่งงบ+สเป็ค ทัก LINE</div>
 
-        <!-- ✅ TRACK: LINE TOP -->
         <a id="btnLineTop" class="btn" href="https://lin.ee/HOm9i3C" rel="nofollow noopener"
            onclick="return trackLineClick(event, 0);">
           💬 แอด LINE เพื่อขอใบเสนอราคา
@@ -458,62 +464,37 @@
       </div>
     </section>
 
-    
-<!-- =======================================================
-     BEST MARKET RATE VIDEO (STRONG CLAIM)
-     ======================================================= -->
-<section class="video-full vip-review" aria-label="best-rate-video">
+    <!-- BEST MARKET RATE VIDEO -->
+    <section class="video-full vip-review" aria-label="best-rate-video">
+      <video class="autoplay-video"
+        src="SaveTik.co_7535860798082551048.mp4"
+        autoplay muted loop playsinline webkit-playsinline
+        preload="auto"></video>
 
-  <video class="autoplay-video"
-    src="SaveTik.co_7535860798082551048.mp4"
-    autoplay
-    muted
-    loop
-    playsinline
-    webkit-playsinline
-    preload="auto">
-  </video>
-
-  <!-- TEXT OVERLAY -->
-  <div class="vip-overlay">
-    <div class="vip-text">
-      <div class="vip-title">
-        หาเพชร <span>เรทดีที่สุด</span><br/>ในตลาด
+      <div class="vip-overlay">
+        <div class="vip-text">
+          <div class="vip-title">หาเพชร <span>เรทดีที่สุด</span><br/>ในตลาด</div>
+          <div class="vip-sub">เทียบราคาจริง • คัดเม็ดสวย NO BGM</div>
+          <a class="btn vip-btn" href="https://lin.ee/HOm9i3C"
+             onclick="return trackLineClick(event,0);">
+            💬 แอด LINE ส่งงบมา เทียบให้
+          </a>
+        </div>
       </div>
-      <div class="vip-sub">
-        เทียบราคาจริง • คัดเม็ดสวย NO BGM
-      </div>
+    </section>
 
-      <a class="btn vip-btn"
-         href="https://lin.ee/HOm9i3C"
-         onclick="return trackLineClick(event,0);">
-        💬 แอด LINE ส่งงบมา เทียบให้
-      </a>
-    </div>
-  </div>
-
-</section>
-
-
-    
-    <!-- 2) VIDEO 1 -->
-    <section class="video-full" aria-label="video">
+    <!-- VIDEO 1 -->
+    <section class="video-full" aria-label="video1">
       <video class="autoplay-video"
         src="snaptik_7421006142152756488_v2.mp4"
         autoplay muted loop playsinline webkit-playsinline
-        preload="auto">
-      </video>
+        preload="auto"></video>
     </section>
 
-    <!-- 3) HOOK + LINE CTA -->
+    <!-- HOOK -->
     <section class="card hook" aria-label="hook" style="margin-top:14px;">
-      <p>
-        อยากได้เม็ดที่ <span>สวยจริง</span> ในงบของคุณ?<br/>
-        ส่ง “งบ + ไซส์ + สเป็ค” ทาง LINE แล้วให้เราคัดให้
-      </p>
-
+      <p>อยากได้เม็ดที่ <span>สวยจริง</span> ในงบของคุณ?<br/>ส่ง “งบ + ไซส์ + สเป็ค” ทาง LINE แล้วให้เราคัดให้</p>
       <div style="margin-top:14px; width:100%;">
-        <!-- ✅ TRACK: LINE HOOK -->
         <a id="btnLineHook" class="btn" href="https://lin.ee/HOm9i3C" rel="nofollow noopener"
            onclick="return trackLineClick(event, 0);">
           💬 แอด LINE เพื่อให้คัดตัวเลือกให้
@@ -521,51 +502,34 @@
       </div>
     </section>
 
-    <!-- 4) VIDEO 2 -->
-    <section class="video-full" aria-label="video">
+    <!-- VIDEO 2 -->
+    <section class="video-full" aria-label="video2">
       <video class="autoplay-video"
         src="snaptik_7587816166631066887_v2.mp4"
         autoplay muted loop playsinline webkit-playsinline
-        preload="auto">
-      </video>
+        preload="auto"></video>
     </section>
 
-    <!-- 5) หาเพชร -->
+    <!-- หาเพชร -->
     <div class="grid">
       <section class="card pad" aria-label="find">
         <h2>หาเพชรอะไรได้บ้าง</h2>
-        <p>
-          รับจัดหาเพชรแท้ธรรมชาติ <b style="color:rgba(255,255,255,.92)">ตามสเป็คและงบของลูกค้า</b>
-          เหมาะสำหรับแหวนหมั้น/แต่งงาน เพชรสะสม/ลงทุน และสเป็คพิเศษ
-        </p>
+        <p>รับจัดหาเพชรแท้ธรรมชาติ <b style="color:rgba(255,255,255,.92)">ตามสเป็คและงบ</b> (0.30–20 กะรัต)</p>
 
         <div class="badges">
           <div class="badge">Natural Diamond 100%</div>
           <div class="badge">0.30 – 20 กะรัต</div>
-          <div class="badge">NO BGM (คัดเม็ดสะอาด)</div>
-          <div class="badge">Round / Oval / Cushion / Emerald</div>
-          <div class="badge">Princess / Radiant / Pear / Heart</div>
+          <div class="badge">NO BGM</div>
+          <div class="badge">GIA/IGI ตามสเป็ค</div>
         </div>
 
-        <div class="goldline"></div>
-
-        <ul class="list">
-          <li class="item">
-            <strong>ตามขนาด (Carat)</strong>
-            <span>0.30–0.50 • 0.70–1.00 • 1.50–3.00 • 5.00–20.00</span>
-          </li>
-          <li class="item">
-            <strong>ตามสเป็คคุณภาพ</strong>
-            <span>Color: D–M • Clarity: IF/VVS/VS/SI • Cut: EX–VG</span>
-          </li>
-          <li class="item">
-            <strong>ตามวัตถุประสงค์</strong>
-            <span>แหวนหมั้น/แต่งงาน • สะสม/ลงทุน • ไซส์/สเป็คพิเศษ</span>
-          </li>
+        <ul class="list" style="margin-top:12px;">
+          <li class="item"><strong>ตามขนาด</strong><span>0.30–0.50 • 0.70–1.00 • 1.50–3.00 • 5.00–20.00</span></li>
+          <li class="item"><strong>ตามคุณภาพ</strong><span>Color: D–M • Clarity: IF/VVS/VS/SI • Cut: EX–VG</span></li>
+          <li class="item"><strong>ตามงาน</strong><span>แหวนหมั้น/แต่งงาน • สะสม/ลงทุน • สเป็คพิเศษ</span></li>
         </ul>
 
         <div style="margin-top:14px;">
-          <!-- ✅ TRACK: LINE MIDDLE -->
           <a id="btnLineMiddle" class="btn" href="https://lin.ee/HOm9i3C" rel="nofollow noopener"
              onclick="return trackLineClick(event, 0);">
             💬 แจ้งงบ + ไซส์ + สเป็ค ผ่าน LINE
@@ -573,88 +537,61 @@
         </div>
       </section>
 
-      <!-- 6) ขั้นตอน -->
+      <!-- ขั้นตอน -->
       <aside class="card pad" id="process" aria-label="process">
         <h2>ขั้นตอนการจัดหา</h2>
         <ul class="list">
-          <li class="item"><strong>1) ทัก LINE แจ้งงบ + สเป็ค</strong><span></span></li>
-          <li class="item"><strong>2) คัดตัวเลือกจากแหล่งนำเข้า</strong><span></span></li>
-          <li class="item"><strong>3) ส่งรูป/วิดีโอ + Certificate</strong><span></span></li>
-          <li class="item"><strong>4) เลือกแล้วค่อยดำเนินการ</strong><span></span></li>
+          <li class="item"><strong>1) ส่งงบ + สเป็ค</strong><span></span></li>
+          <li class="item"><strong>2) คัดตัวเลือกเรทคุ้ม</strong><span></span></li>
+          <li class="item"><strong>3) ส่งรูป/วิดีโอ + ใบเซอร์</strong><span></span></li>
+          <li class="item"><strong>4) เลือกเม็ดที่ชอบแล้วค่อยดำเนินการ</strong><span></span></li>
         </ul>
       </aside>
     </div>
-    
-<!-- =======================================================
-     VIP CUSTOMER REVIEW + STRONG MESSAGE
-     ======================================================= -->
-<section class="video-full vip-review" aria-label="vip-review">
 
-  <video class="autoplay-video"
-    src="SaveTik.co_7534575569921510663 (1).mp4"
-    autoplay
-    muted
-    loop
-    playsinline
-    webkit-playsinline
-    preload="auto">
-  </video>
+    <!-- VIP CUSTOMER REVIEW -->
+    <section class="video-full vip-review" aria-label="vip-review">
+      <video class="autoplay-video"
+        src="SaveTik.co_7534575569921510663 (1).mp4"
+        autoplay muted loop playsinline webkit-playsinline
+        preload="auto"></video>
 
-  <!-- TEXT OVERLAY -->
-  <div class="vip-overlay">
-    <div class="vip-text">
-      <div class="vip-title">
-        ลูกค้า <span>VIP</span> เลือกเรา<br/>เพราะเรทคุ้มจริง
-      </div>
-      <div class="vip-sub">
-        เทียบราคาให้ก่อนตัดสินใจ
-      </div>
-
-      <a class="btn vip-btn"
-         href="https://lin.ee/HOm9i3C"
-         onclick="return trackLineClick(event,0);">
-        💬 แอด LINE ดูตัวเลือกในงบคุณ
-      </a>
-    </div>
-  </div>
-
-</section>
-
-
-    
-    <!-- 7) Gallery -->
-    <section class="card pad" id="gallery" style="margin-top:14px;">
-      <h2>ตัวอย่างเพชรที่เคยจัดหา</h2>
-
-      <div class="gallery-list">
-        <div class="ph-single">
-          <img
-            src="ChatGPT Image 26 ธ.ค. 2568 14_33_49.png"
-            alt="เพชรแท้ธรรมชาติหลายรูปทรง คัดสเป็คสวย NO BGM โดย Mongkolsiri Diamond"
-            loading="lazy">
-          <p class="img-note">ตัวอย่างเพชรแท้ธรรมชาติ • คัดสเป็คสวย (NO BGM)</p>
+      <div class="vip-overlay">
+        <div class="vip-text">
+          <div class="vip-title">ลูกค้า <span>VIP</span> เลือกเรา<br/>เพราะเรทคุ้มจริง</div>
+          <div class="vip-sub">เทียบราคาให้ก่อนตัดสินใจ</div>
+          <a class="btn vip-btn" href="https://lin.ee/HOm9i3C"
+             onclick="return trackLineClick(event,0);">
+            💬 แอด LINE ดูตัวเลือกในงบคุณ
+          </a>
         </div>
       </div>
     </section>
 
-    <!-- 8) CTA -->
-    <section class="card pad center" style="margin-top:14px;">
-      <h2>เริ่มต้นคัดเพชรกับ Mongkolsiri Diamond</h2>
-      <p style="max-width:720px;margin:0 auto 12px;">
-        แอด LINE แล้วส่ง “งบ + ไซส์ + สเป็ค” เราจะคัดตัวเลือกที่เหมาะที่สุดให้
-      </p>
+    <!-- Gallery -->
+    <section class="card pad" id="gallery" style="margin-top:14px;">
+      <h2>ตัวอย่างเพชรที่เคยจัดหา</h2>
+      <div class="gallery-list">
+        <div class="ph-single">
+          <img src="ChatGPT Image 26 ธ.ค. 2568 14_33_49.png" alt="ตัวอย่างเพชรแท้ธรรมชาติ" loading="lazy">
+          <p class="img-note">ตัวอย่างเพชรแท้ธรรมชาติ</p>
+        </div>
+      </div>
+    </section>
 
-      <!-- ✅ TRACK: LINE BOTTOM -->
+    <!-- CTA -->
+    <section class="card pad center" style="margin-top:14px;">
+      <h2>ให้เราคัดเรทดีที่สุดในงบคุณ</h2>
+      <p style="max-width:720px;margin:0 auto 12px;">ทัก LINE ส่ง “งบ + ไซส์ + สเป็ค” แล้วเราจะเทียบให้ก่อนตัดสินใจ</p>
       <a id="btnLineBottom" class="btn" href="https://lin.ee/HOm9i3C" rel="nofollow noopener"
          onclick="return trackLineClick(event, 0);">
-        💬 แอด LINE ปรึกษาฟรี
+        💬 แอด LINE ตอนนี้
       </a>
     </section>
 
   </div>
 
   <script>
-    // ===== Autoplay hardening (iOS/Android) =====
     (function(){
       const videos = Array.from(document.querySelectorAll('.autoplay-video'));
       videos.forEach(v=>{
