@@ -328,6 +328,57 @@
       }
     }
 
+    /* ===== VIP REVIEW OVERLAY ===== */
+.vip-review{
+  position: relative;
+}
+
+.vip-review .vip-overlay{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+  padding:22px 16px;
+  background: linear-gradient(
+    180deg,
+    rgba(0,0,0,0) 40%,
+    rgba(0,0,0,.55) 75%,
+    rgba(0,0,0,.75) 100%
+  );
+  pointer-events:none;
+}
+
+.vip-review .vip-text{
+  width:100%;
+  max-width:520px;
+  text-align:center;
+  pointer-events:auto;
+}
+
+.vip-title{
+  font-size: clamp(20px, 5.8vw, 28px);
+  font-weight:900;
+  line-height:1.25;
+  color:#fff;
+  margin-bottom:6px;
+}
+
+.vip-title span{
+  color: var(--gold);
+}
+
+.vip-sub{
+  font-size:14px;
+  color: rgba(255,255,255,.85);
+  margin-bottom:14px;
+}
+
+.vip-btn{
+  width:100%;
+}
+
+
     /* Hook */
     .hook{
       display:flex;
